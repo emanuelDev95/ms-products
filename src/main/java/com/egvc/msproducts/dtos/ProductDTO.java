@@ -6,5 +6,6 @@ public record ProductDTO (
         String description,
         Double price,
         String image,
-        CategoryDto category) {
+        CategoryDto category,
+        BrandDto brand) {
 }

@@ -9,4 +9,5 @@ public interface GenericMapper<D,E extends AbstractEntity> {
 
     D toDto(E entity);
 
+
 }

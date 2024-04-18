@@ -26,6 +26,8 @@ public class Product extends AbstractEntity<Long> implements Serializable {
     private String image;
     @ManyToOne
     private Category category;
+    @ManyToOne
+    private Brand brand;
 
 
 }
