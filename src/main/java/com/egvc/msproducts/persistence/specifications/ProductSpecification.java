@@ -5,14 +5,15 @@ import com.egvc.msproducts.persistence.entities.Category;
 import com.egvc.msproducts.persistence.entities.Product;
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductSpecification implements Specification<Product> {
 
-    private Long brand;
-    private Long category;
+    private final Long brand;
+    private final Long category;
 
     public ProductSpecification(Long brand, Long category) {
         this.brand = brand;
@@ -20,7 +21,7 @@ public class ProductSpecification implements Specification<Product> {
     }
 
     @Override
-    public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+    public Predicate toPredicate(@NonNull  Root<Product> root, @NonNull CriteriaQuery<?>  query, @NonNull CriteriaBuilder cb) {
         List<Predicate> predicates = new ArrayList<>();
 
         if (brand != 0) {
