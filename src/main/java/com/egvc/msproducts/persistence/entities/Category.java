@@ -1,4 +1,4 @@
-package com.egvc.msproducts.entities;
+package com.egvc.msproducts.persistence.entities;
 
 import com.egvc.msproducts.commons.entities.AbstractEntity;
 import jakarta.persistence.*;

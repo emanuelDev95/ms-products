@@ -2,7 +2,7 @@ package com.egvc.msproducts.mapper;
 
 import com.egvc.msproducts.commons.mappers.GenericMapper;
 import com.egvc.msproducts.dtos.ProductDTO;
-import com.egvc.msproducts.entities.Product;
+import com.egvc.msproducts.persistence.entities.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

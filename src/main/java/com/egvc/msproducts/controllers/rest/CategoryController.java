@@ -31,7 +31,7 @@ public class CategoryController {
     }
 
     @GetMapping()
-    public ResponseEntity<MessageResponse<List<CategoryDto>>> getAllPersons() {
+    public ResponseEntity<MessageResponse<List<CategoryDto>>> getAll() {
         return ResponseEntity.ok(new MessageResponse<>(
             "OK", HttpStatus.OK.value(),
             this.categoryService.getAll()));

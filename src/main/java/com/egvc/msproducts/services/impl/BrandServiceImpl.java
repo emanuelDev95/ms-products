@@ -2,9 +2,9 @@ package com.egvc.msproducts.services.impl;
 
 import com.egvc.msproducts.commons.services.impl.AbstractGenericService;
 import com.egvc.msproducts.dtos.BrandDto;
-import com.egvc.msproducts.entities.Brand;
+import com.egvc.msproducts.persistence.entities.Brand;
 import com.egvc.msproducts.mapper.BrandMapper;
-import com.egvc.msproducts.repositories.BrandRepository;
+import com.egvc.msproducts.persistence.repositories.BrandRepository;
 import com.egvc.msproducts.services.BrandService;;
 import org.springframework.stereotype.Service;
 

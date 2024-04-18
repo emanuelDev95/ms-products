@@ -10,6 +10,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -31,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping()
-    public ResponseEntity<MessageResponse<List<ProductDTO>>> getAllPersons() {
+    public ResponseEntity<MessageResponse<List<ProductDTO>>> getAll() {
         return ResponseEntity.ok(new MessageResponse<>(
             "OK", HttpStatus.OK.value(),
             this.productService.getAll()));
@@ -68,6 +69,16 @@ public class ProductController {
                 .build());
 
 
+    }
+
+    @GetMapping("/params")
+    public ResponseEntity<MessageResponse<List<ProductDTO>>> searchParams(@RequestParam Map<String, Object> params) {
+
+        return ResponseEntity.ok(MessageResponse.<List<ProductDTO>>builder()
+                .statusCode(HttpStatus.OK.value())
+                .message("Exito")
+                .data(this.productService.searchProducts(params))
+                .build());
     }
 
 

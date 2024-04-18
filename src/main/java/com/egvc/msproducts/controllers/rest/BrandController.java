@@ -33,7 +33,7 @@ public class BrandController {
     }
 
     @GetMapping()
-    public ResponseEntity<MessageResponse<List<BrandDto>>> getAllPersons() {
+    public ResponseEntity<MessageResponse<List<BrandDto>>> getAll() {
         return ResponseEntity.ok(new MessageResponse<>(
             "OK", HttpStatus.OK.value(),
             this.brandService.getAll()));
