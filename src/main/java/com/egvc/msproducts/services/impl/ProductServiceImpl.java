@@ -16,8 +16,8 @@ import java.util.Map;
 @Service
 public class ProductServiceImpl extends AbstractGenericService<Product, ProductDTO, Long> implements ProductService {
 
-    private ProductRepository productRepository;
-    private ProductMapper productMapper;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
     private static final String NOT_FOUND_MESSAGE = "Product not found";
 
     protected ProductServiceImpl(ProductRepository repository, ProductMapper mapper) {
