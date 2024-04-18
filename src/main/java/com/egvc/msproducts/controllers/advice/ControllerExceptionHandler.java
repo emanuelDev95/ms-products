@@ -2,6 +2,7 @@ package com.egvc.msproducts.controllers.advice;
 
 import com.egvc.msproducts.dtos.ErrorMessageResponse;
 import com.egvc.msproducts.exceptions.ResourceNotFoundException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,7 +33,15 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
                     HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     new Date(),
                     ex.getMessage()));
-    
-  
+  }
+
+  @ExceptionHandler(ConstraintViolationException.class)
+  public ResponseEntity<ErrorMessageResponse> constraintViolationExceptionHandler(ConstraintViolationException ex) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body(new ErrorMessageResponse(
+                    HttpStatus.BAD_REQUEST.value(),
+                    new Date(),
+                    ex.getMessage()
+            ));
   }
 }
