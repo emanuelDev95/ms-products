@@ -1,5 +1,6 @@
 package com.egvc.msproducts.commons.services.impl;
 
+import com.egvc.msproducts.commons.entities.AbstractEntity;
 import com.egvc.msproducts.commons.mappers.GenericMapper;
 import com.egvc.msproducts.commons.services.GenericService;
 import com.egvc.msproducts.exceptions.ResourceNotFoundException;
@@ -9,7 +10,7 @@ import org.springframework.lang.NonNull;
 import java.util.List;
 
 
-public abstract class AbstractGenericService<E,D,K> implements GenericService<D,K> {
+public abstract class AbstractGenericService<E extends AbstractEntity<K>,D,K> implements GenericService<D,K> {
 
     protected JpaRepository<E,K> repository;
     protected GenericMapper<D,E> mapper;
@@ -52,6 +53,14 @@ public abstract class AbstractGenericService<E,D,K> implements GenericService<D,
         this.repository.deleteById(id);
     }
 
+    @Override
+    public D update(D dto, K id) {
 
-    
+        if(!this.repository.existsById(id)) {
+            throw new ResourceNotFoundException(this.notFoundMessage);
+        }
+        var entitie = this.mapper.toEntity(dto);
+        entitie.setId(id);
+        return this.mapper.toDto(this.repository.saveAndFlush(entitie));
+    }
 }

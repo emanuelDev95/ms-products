@@ -14,5 +14,7 @@ public interface GenericService <D, K> {
 
     void delete(@NonNull K id);
 
+    D update(D dto, K id);
+
     
 }

@@ -1,21 +1,17 @@
 package com.egvc.msproducts.entities;
 
+import com.egvc.msproducts.commons.entities.AbstractEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 import java.io.Serializable;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity @Table(name = "categoria")
 
-@Data @NoArgsConstructor @AllArgsConstructor
-public class Category implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
+public class Category  extends AbstractEntity<Long> implements Serializable {
 
     private String nombre;
 }

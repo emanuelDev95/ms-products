@@ -1,7 +1,9 @@
 package com.egvc.msproducts.commons.mappers;
 
 
-public interface GenericMapper<D,E> {
+import com.egvc.msproducts.commons.entities.AbstractEntity;
+
+public interface GenericMapper<D,E extends AbstractEntity> {
 
     E toEntity(D dto);
 
