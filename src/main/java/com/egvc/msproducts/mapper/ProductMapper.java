@@ -2,14 +2,20 @@ package com.egvc.msproducts.mapper;
 
 
 import com.egvc.msproducts.commons.mappers.GenericMapper;
+import com.egvc.msproducts.dtos.CategoryDto;
 import com.egvc.msproducts.dtos.ProductDTO;
 import com.egvc.msproducts.entities.Product;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
 @Component
+@AllArgsConstructor
 public class ProductMapper implements GenericMapper<ProductDTO, Product> {
+
+    private final CategoryMapper categoryMapper;
+
     @Override
     public Product toEntity(ProductDTO dto) {
         var product = Product.builder()
@@ -17,6 +23,7 @@ public class ProductMapper implements GenericMapper<ProductDTO, Product> {
                 .description(dto.description())
                 .price(dto.price())
                 .image(dto.image())
+                .category(categoryMapper.toEntity(dto.category()))
                 .build() ;
         if(Objects.nonNull(dto.id())){
             product.setId(dto.id());
@@ -27,6 +34,7 @@ public class ProductMapper implements GenericMapper<ProductDTO, Product> {
     @Override
     public ProductDTO toDto(Product entity) {
         return new ProductDTO(entity.getId(),entity.getName(), entity.getDescription(),
-                entity.getPrice(), entity.getImage());
+                entity.getPrice(), entity.getImage(),
+                categoryMapper.toDto(entity.getCategory()));
     }
 }

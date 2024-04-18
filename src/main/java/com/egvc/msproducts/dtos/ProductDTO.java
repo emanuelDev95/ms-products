@@ -5,5 +5,6 @@ public record ProductDTO (
         String name,
         String description,
         Double price,
-        String image) {
+        String image,
+        CategoryDto category) {
 }

@@ -19,8 +19,10 @@ public class Product extends AbstractEntity<Long> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private Double price;
+    @Column(columnDefinition = "TEXT")
     private String image;
     @ManyToOne
     private Category category;
