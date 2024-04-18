@@ -6,6 +6,7 @@ import lombok.*;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity @Table(name = "categoria")
@@ -14,4 +15,7 @@ import java.io.Serializable;
 public class Category  extends AbstractEntity<Long> implements Serializable {
 
     private String nombre;
+    private String descripcion;
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Product> products;
 }
